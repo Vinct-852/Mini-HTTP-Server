@@ -16,16 +16,9 @@ clientSocket.bind(('', clientPort))
 clientSocket.connect((serverName, serverPort))
 
 isImg = False
-if_modified_since = 'Sun, 14 Mar 2024 17:16:25 GMT'
-# command = "GET /index.html HTTP/1.1\r\n\r\n"
-# command = "GET /capybara1.jpeg HTTP/1.1\r\n\r\n"
-# isImg = True
-# command = "HEAD /index.html HTTP/1.1\r\n\r\n"
-# command = "HEAD /capybara1.jpeg HTTP/1.1\r\n\r\n"
-# command = "GET /capy.jpeg HTTP/1.1\r\n\r\n"
-# command = "HEAD /capy.jg HTTP/1.1\r\n\r\n"
-# command = "HEA /index.html HTTP/1.1\r\n\r\n"
-command = f"GET / HTTP/1.1\r\nIf-Modified-Since: {if_modified_since}\r\n\r\n"
+
+if_modified_since = 'Sun, 14 Mar 2000 17:16:25 GMT'
+command = "GET /index.html HTTP/1.1\r\nConnection: keep-alive\r\n\r\n"
 
 clientSocket.send(str(command).encode())
 
@@ -51,7 +44,6 @@ with open('record.txt', 'ab') as f:
     if not isImg:
         f.write(file_data)
     
-
 with open('record.txt', 'a') as f:
     f.write('\n\n')
 
@@ -61,3 +53,7 @@ if isImg:
 
 # Close the socket
 clientSocket.close()
+# command = "HEAD /capybara1.jpeg HTTP/1.1\r\n\r\n"
+# command = "GET /capy.jpeg HTTP/1.1\r\n\r\n"
+
+# command = "GET /index.html HTTP/1.1\r\nConnection: keep-alive\r\n\r\n"
